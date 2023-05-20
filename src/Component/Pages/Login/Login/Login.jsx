@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext)
+    const {signIn, googleSignIn} = useContext(AuthContext)
 
     const handleLogin = event => {
         event.preventDefault();
@@ -17,6 +18,17 @@ const Login = () => {
             console.log(user)
         })
         .catch(error => console.log(error))
+    }
+
+    const handleGoogleSignIn = () =>{
+        googleSignIn()
+        .then(result=>{
+            const googleUser = result.user;
+            console.log(googleUser)
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
 
     return (
@@ -49,6 +61,7 @@ const Login = () => {
                                         <button className="btn btn-primary">Login</button>
                                     </div>
                                 </form>
+                                <button onClick={handleGoogleSignIn} className="text-5xl ml-5"><FaGoogle className="border-4 p-2"></FaGoogle></button>
                                 <p className="text-green-500">Do not Have an Account? <Link to="/register" className="text-pink-600">Register</Link></p>
                             </div>
                         </div>
