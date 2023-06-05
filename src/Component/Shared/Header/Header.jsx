@@ -1,11 +1,24 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
 
     const menuLink = <>
         <li> <Link to="/">Home</Link> </li>
+        <li><Link to='/addtoys'>Add Toys</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
     </>
+
+const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
     return (
         <div className="container mx-auto">
@@ -26,8 +39,16 @@ const Header = () => {
                         {menuLink}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <button className="btn"><Link to="/login">Login</Link></button>
+                <div className="navbar-end flex gap-4">
+                    <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                        <div className="avatar">
+                            <div className="w-12 rounded-full">
+                            <img src={`${user?.photoURL}`} alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    {user ? <button className="btn btn-primary" onClick={handleSignOut}><Link>Log Out</Link></button> :
+                    <button className="btn btn-primary"><Link to="/login">Login</Link></button>}
                 </div>
             </div>
         </div>

@@ -1,26 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, profileUpdate, setLoading } = useContext(AuthContext)
+    const [error, setError] = useState("")
+    // const navigate = useNavigate()
 
-    const handleRegister = event => {
+    const handleRegister = async (event) => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
-        const photo = form.photo.value;
+        const url = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
-        createUser(email, password)
-        .then(result=>{
-            const user =result.user;
-            console.log(user);
-        })
-        .catch(error => console.log(error))
+        console.log(name, url, email, password);
+        if (password.length < 6) {
+            setError("Password length must be up to 6 char");
+            return;
+          }
+         
+          try {
+            setError("");
+            setLoading(true);
+            const { user } = await createUser(email, password);
+            await profileUpdate(user, name, url);
+            // navigate(form, { replace: true });
+          } catch (error) {
+            setError(error.message);
+          }
+        };
        
-    }
 
     return (
         <div className=" bg-base-200">
@@ -67,7 +77,7 @@ const Register = () => {
                                         <button className="btn btn-primary">Register</button>
                                     </div>
                                     <br />
-                                    {/* <p className='text-error'>{error}</p> */}
+                                    <p className='text-error'>{error}</p>
                                 </form>
                                 <p className="text-green-500">Already Have an Account? <Link to="/login" className="text-pink-600">Login</Link></p>
                             </div>
