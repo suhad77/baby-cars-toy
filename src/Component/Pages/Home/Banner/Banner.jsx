@@ -8,7 +8,7 @@ const Banner = () => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-6xl font-bold">SALE OF NEW AND OLD CAR</h1>
                         <p className="mb-5 text-3xl">shop and get an extra 10% off your first purchase</p>
-                        <button className="btn btn-primary">Order Now</button>
+                        <button className="btn bg-blue-700 hover:bg-blue-800">Order Now</button>
                     </div>
                 </div>
             </div>

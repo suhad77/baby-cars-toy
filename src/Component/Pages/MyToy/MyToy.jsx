@@ -49,7 +49,7 @@ const MyToy = () => {
         })
     }
     return (
-        <section>
+        <section className="container mx-auto">
             <div className="flex items-center justify-end my-3">
                 <p className="mr-2 font-semibold uppercase" >Sort by price : </p>
                 <select

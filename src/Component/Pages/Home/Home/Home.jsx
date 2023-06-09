@@ -1,6 +1,7 @@
 import Banner from "../Banner/Banner";
 import Catagory from "../Catagory/Catagory";
 import Galary from "../Galary/Galary";
+import HappyClient from "./HappyClient/HappyClient";
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
             <Banner />
             <Galary />
             <Catagory />
+            <HappyClient />
         </div>
     );
 };

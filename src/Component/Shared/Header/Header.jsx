@@ -34,7 +34,7 @@ const handleSignOut = async () => {
                             {menuLink}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">Baby Car Toy</a>
+                    <Link to="/" className="btn btn-ghost normal-case text-xl">Baby Car Toy</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -49,8 +49,8 @@ const handleSignOut = async () => {
                             </div>
                         </div>
                     </div>
-                    {user ? <button className="btn btn-primary" onClick={handleSignOut}><Link>Log Out</Link></button> :
-                    <button className="btn btn-primary"><Link to="/login">Login</Link></button>}
+                    {user ? <button className="btn bg-blue-700 hover:bg-blue-800" onClick={handleSignOut}><Link>Log Out</Link></button> :
+                    <button className="btn bg-blue-700 hover:bg-blue-800"><Link to="/login">Login</Link></button>}
                 </div>
             </div>
         </div>
