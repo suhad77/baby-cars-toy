@@ -17,7 +17,6 @@ const UpdateToy = () => {
         const quantity = form.quantity.value;
         const Catagory = form.Catagory.value;
         const toy = { name, photoUrl, price, rating, description, quantity, Catagory };
-        console.log(toy)
 
         fetch(`http://localhost:5000/myToys/${toyInfo?._id}`, {
             method: 'PUT',

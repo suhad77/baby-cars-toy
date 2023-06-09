@@ -7,16 +7,14 @@ const MyToy = () => {
 
     const [toys, setToys] = useState();
     const [sort, setSort] = useState();
-    console.log(toys)
 
     const { user } = useContext(AuthContext);
-    console.log(user)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myToys?email=${user?.Email}&sort=${sort}`)
+        fetch(`http://localhost:5000/myToys?email=${user?.email}&sort=${sort}`)
             .then(res => res.json())
             .then(data => setToys(data))
-    }, [user?.Email, sort])
+    }, [user?.email, sort])
 
     const handleDelete = (_id) => {
 

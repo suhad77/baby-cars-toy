@@ -12,15 +12,15 @@ const AddToy = () => {
         const form = event.target;
         const name = form.name.value;
         const photoUrl = form.photoUrl.value;
-        const Email = form.selerEmail.value;
+        const email = form.selerEmail.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const description = form.description.value;
         const selerName = form.selerName.value;
         const quantity = form.quantity.value;
-        const Catagory = form.Catagory.value;
-        const toy = { name, photoUrl, Email, price, rating, description, selerName, quantity, Catagory };
-        console.log(toy)
+        const catagory = form.Catagory.value;
+        const toy = { name, photoUrl, email, price, rating, description, selerName, quantity, catagory };
+
 
         fetch('http://localhost:5000/allToys', {
             method: 'POST',
@@ -72,11 +72,11 @@ const AddToy = () => {
                                             <label className="label">
                                                 <span className="label-text">Sub Catagory</span>
                                             </label>
-                                            <select name="Catagory" className="select select-primary">
+                                            <select id="categories" name="Catagory" className="select select-primary">
                                                 <option disabled selected>Catagory</option>
-                                                <option>Regular Car</option>
-                                                <option>Sports Car</option>
-                                                <option>Old Car</option>
+                                                <option value="regular">Regular Car</option>
+                                                <option value="sport">Sports Car</option>
+                                                <option value="old">Old Car</option>
                                             </select>
                                         </div>
                                     </div>

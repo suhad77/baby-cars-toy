@@ -10,11 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "aos": "^2.3.4",
     "daisyui": "^2.51.6",
     "firebase": "^9.22.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
+    "react-tabs": "^6.0.1",
     "sweetalert2": "^11.7.11"
   },
   "devDependencies": {
