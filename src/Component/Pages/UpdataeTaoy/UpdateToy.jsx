@@ -1,44 +1,41 @@
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { useLoaderData } from "react-router-dom";
 
 
-const AddToy = () => {
+const UpdateToy = () => {
 
-    const { user } = useContext(AuthContext)
+    const toyInfo = useLoaderData();
 
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
         const photoUrl = form.photoUrl.value;
-        const Email = form.selerEmail.value;
         const price = form.price.value;
         const rating = form.rating.value;
         const description = form.description.value;
-        const selerName = form.selerName.value;
         const quantity = form.quantity.value;
         const Catagory = form.Catagory.value;
-        const toy = { name, photoUrl, Email, price, rating, description, selerName, quantity, Catagory };
+        const toy = { name, photoUrl, price, rating, description, quantity, Catagory };
         console.log(toy)
 
-        fetch('http://localhost:5000/allToys', {
-            method: 'POST',
+        fetch(`http://localhost:5000/myToys/${toyInfo?._id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(toy)
         })
             .then(res => res.json())
-            .then(data =>{
+            .then(data => {
                 console.log(data);
-                if(data.insertedId){
+                if (data.acknowledged) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'User Update succrssfully',
+                        text: 'User added succrssfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                      })
+                    })
                 }
             })
     }
@@ -49,7 +46,7 @@ const AddToy = () => {
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col w-full">
                     <div className="card flex-shrink-0 shadow-2xl w-full bg-base-100">
-                        <h2 className="text-center text-5xl mt-4">Add Toys</h2>
+                        <h2 className="text-center text-5xl mt-4">Update Toys</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="card-body">
                                 <div className="md:flex gap-4">
@@ -57,18 +54,18 @@ const AddToy = () => {
                                         <label className="label">
                                             <span className="label-text">Name</span>
                                         </label>
-                                        <input type="text" name="name" placeholder="Name" className="input input-bordered" />
+                                        <input type="text" name="name" defaultValue={toyInfo?.name} placeholder="Name" className="input input-bordered" />
                                     </div>
                                     <div className="form-control md:w-1/2">
                                         <label className="label">
                                             <span className="label-text">Picture URL of the toy</span>
                                         </label>
-                                        <input type="text" placeholder="photoUrl" name="photoUrl" className="input input-bordered" />
+                                        <input type="text" placeholder="photoUrl" defaultValue={toyInfo?.photoUrl} name="photoUrl" className="input input-bordered" />
                                     </div>
                                 </div>
                                 <div className="md:flex gap-4">
                                     <div className="md:w-1/2">
-                                        <div className="form-control w-full max-w-xs">
+                                        <div className="form-control w-full max-w-xs" defaultValue={toyInfo?.Catagory}>
                                             <label className="label">
                                                 <span className="label-text">Sub Catagory</span>
                                             </label>
@@ -84,7 +81,7 @@ const AddToy = () => {
                                         <label className="label">
                                             <span className="label-text">Price</span>
                                         </label>
-                                        <input type="text" name="price" placeholder="Price" className="input input-bordered" />
+                                        <input type="text" name="price" defaultValue={toyInfo?.price} placeholder="Price" className="input input-bordered" />
                                     </div>
                                 </div>
                                 <div className="md:flex gap-4">
@@ -92,27 +89,13 @@ const AddToy = () => {
                                         <label className="label">
                                             <span className="label-text">Rating</span>
                                         </label>
-                                        <input type="text" name="rating" placeholder="Rating" className="input input-bordered" />
+                                        <input type="text" name="rating" placeholder="Rating" defaultValue={toyInfo?.rating} className="input input-bordered" />
                                     </div>
-                                    <div className="form-control md:w-1/2">
-                                        <label className="label">
-                                            <span className="label-text">Seler Email</span>
-                                        </label>
-                                        <input type="text" defaultValue={user?.email} disabled name="selerEmail" placeholder="Seler Email" className="input input-bordered" />
-                                    </div>
-                                </div>
-                                <div className="md:flex gap-4">
                                     <div className="form-control md:w-1/2">
                                         <label className="label">
                                             <span className="label-text">description</span>
                                         </label>
-                                        <input type="text" name="description" placeholder="description" className="input input-bordered" />
-                                    </div>
-                                    <div className="form-control md:w-1/2">
-                                        <label className="label">
-                                            <span className="label-text">Seler Name</span>
-                                        </label>
-                                        <input type="text" defaultValue={user?.displayName} disabled name="selerName" placeholder="Seler Name" className="input input-bordered" />
+                                        <input type="text" name="description" defaultValue={toyInfo?.description} placeholder="description" className="input input-bordered" />
                                     </div>
                                 </div>
                                 <div className="md:flex gap-4">
@@ -120,10 +103,10 @@ const AddToy = () => {
                                         <label className="label">
                                             <span className="label-text">Available quantity</span>
                                         </label>
-                                        <input type="text" name="quantity" placeholder="Available quantity" className="input input-bordered" />
+                                        <input type="text" name="quantity" defaultValue={toyInfo?.quantity} placeholder="Available quantity" className="input input-bordered" />
                                     </div>
                                     <div className="form-control mt-9 md:w-1/2">
-                                        <button className="btn btn-primary">Add Toy</button>
+                                        <button className="btn btn-primary">Update Toy</button>
                                     </div>
                                 </div>
                             </div>
@@ -135,4 +118,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default UpdateToy;

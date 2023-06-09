@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 const ToyTable = ({toy}) => {
     // eslint-disable-next-line react/prop-types
     const {  name, photoUrl, price,  selerName, quantity, Catagory, _id } = toy;
-    console.log(toy)
     return (
             <tr className="text-center">
                 <td>

@@ -1,10 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
+import { useState } from "react";
 
 const Login = () => {
+    const [error, setError] = useState("")
     const {signIn, googleSignIn} = useContext(AuthContext)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -16,8 +22,9 @@ const Login = () => {
         .then(result=>{
             const user = result.user;
             console.log(user)
+            navigate(from, {replace:true})
         })
-        .catch(error => console.log(error))
+        .catch(error => setError(error))
     }
 
     const handleGoogleSignIn = () =>{
@@ -60,6 +67,8 @@ const Login = () => {
                                     <div className="form-control mt-6">
                                         <button className="btn btn-primary">Login</button>
                                     </div>
+                                    <br />
+                                    <p className='text-error'>{error}</p>
                                 </form>
                                 <button onClick={handleGoogleSignIn} className="text-5xl ml-5"><FaGoogle className="border-4 p-2"></FaGoogle></button>
                                 <p className="text-green-500">Do not Have an Account? <Link to="/register" className="text-pink-600">Register</Link></p>
