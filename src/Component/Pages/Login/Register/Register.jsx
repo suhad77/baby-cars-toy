@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, profileUpdate, setLoading } = useContext(AuthContext)
     const [error, setError] = useState("")
-    // const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -26,7 +28,7 @@ const Register = () => {
             setLoading(true);
             const { user } = await createUser(email, password);
             await profileUpdate(user, name, url);
-            // navigate(form, { replace: true });
+            navigate(from, { replace: true });
         } catch (error) {
             setError(error.message);
         }
