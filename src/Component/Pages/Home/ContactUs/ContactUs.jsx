@@ -38,7 +38,7 @@ const ContactUs = () => {
                                 <input type="text" placeholder="password" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Send</button>
+                                <button className="btn bg-blue-700 hover:bg-blue-800">Send</button>
                             </div>
                         </div>
                     </div>
