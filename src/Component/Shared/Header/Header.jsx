@@ -8,9 +8,9 @@ const Header = () => {
 
     const menuLink = <>
         <li> <Link to="/">Home</Link> </li>
-        <li><Link to='/addtoys'>Add Toys</Link></li>
+        {user?<li><Link to='/addtoys'>Add Toys</Link></li>:""}
         <li><Link to='/alltoys'>All Toys</Link></li>
-        <li><Link to='/mytoy'>My Toy</Link></li>
+        {user?<li><Link to='/mytoy'>My Toy</Link></li>:""}
         <li><Link to='/blog'>Blog</Link></li>
     </>
 
