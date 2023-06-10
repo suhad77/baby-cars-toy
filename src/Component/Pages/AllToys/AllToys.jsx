@@ -15,7 +15,7 @@ const AllToys = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allToys?search=${search}`)
+        fetch(`https://baby-cars-toys-server-suhad77.vercel.app/allToys?search=${search}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [search])

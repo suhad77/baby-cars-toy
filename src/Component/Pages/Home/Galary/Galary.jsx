@@ -7,7 +7,7 @@ const Galary = () => {
     const [Toys , setToys] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allToys`)
+        fetch(`https://baby-cars-toys-server-suhad77.vercel.app/allToys`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [])

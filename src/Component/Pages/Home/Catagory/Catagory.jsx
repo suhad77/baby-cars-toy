@@ -12,7 +12,7 @@ const Catagory = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allToys?catagory=${categories}`)
+        fetch(`https://baby-cars-toys-server-suhad77.vercel.app/allToys?catagory=${categories}`)
             .then(res => res.json())
             .then(data => setToys(data))
     }, [categories])

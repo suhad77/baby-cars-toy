@@ -10,11 +10,13 @@ import ToyDetails from "../Pages/ToyDetails/ToyDetails";
 import Blog from "../Pages/Blog/Blog";
 import MyToy from "../Pages/MyToy/MyToy";
 import UpdateToy from "../Pages/UpdataeTaoy/UpdateToy";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -39,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <PrivateRoutes> <ToyDetails /> </PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
+        loader: ({ params }) => fetch(`https://baby-cars-toys-server-suhad77.vercel.app/toy/${params.id}`)
       },
       {
         path: "/mytoy",
@@ -48,7 +50,7 @@ const router = createBrowserRouter([
       {
           path: "myToys/:id",
           element: <PrivateRoutes><UpdateToy></UpdateToy></PrivateRoutes>,
-          loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`)
+          loader: ({ params }) => fetch(`https://baby-cars-toys-server-suhad77.vercel.app/toy/${params.id}`)
       },
       {
         path: "/blog",
