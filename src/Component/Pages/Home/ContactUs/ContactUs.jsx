@@ -38,7 +38,7 @@ const ContactUs = () => {
                                 <input type="text" placeholder="password" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Login</button>
+                                <button className="btn btn-primary">Send</button>
                             </div>
                         </div>
                     </div>
