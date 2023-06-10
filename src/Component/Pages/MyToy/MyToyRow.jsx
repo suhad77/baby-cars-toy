@@ -25,7 +25,7 @@ const MyToyRow = ({ toy, handleDelete }) => {
                         to={`/myToys/${toy?._id}`}
                         className="font-medium"
                     >
-                        <button className="btn btn-primary"> Update </button>
+                        <button className="btn bg-blue-700 hover:bg-blue-800"> Update </button>
                     </Link>
                 </span>
                 <span>
@@ -33,7 +33,7 @@ const MyToyRow = ({ toy, handleDelete }) => {
                         onClick={() => handleDelete(toy?._id)}
                         className="font-medium"
                     >
-                        <button className="btn btn-primary">  Delete </button>
+                        <button className="btn bg-blue-700 hover:bg-blue-800">  Delete </button>
                     </Link>
                 </span>
             </th>
