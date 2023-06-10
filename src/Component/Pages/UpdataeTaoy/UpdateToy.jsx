@@ -105,7 +105,7 @@ const UpdateToy = () => {
                                         <input type="text" name="quantity" defaultValue={toyInfo?.quantity} placeholder="Available quantity" className="input input-bordered" />
                                     </div>
                                     <div className="form-control mt-9 md:w-1/2">
-                                        <button className="btn btn-primary">Update Toy</button>
+                                        <button className="btn bg-blue-700 hover:bg-blue-800">Update Toy</button>
                                     </div>
                                 </div>
                             </div>
