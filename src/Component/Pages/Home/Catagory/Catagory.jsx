@@ -7,7 +7,6 @@ import Toys from "./Toys/Toys";
 const Catagory = () => {
 
     const [categories, setCategories] = useState('sports');
-    console.log(categories)
 
     const [toys, setToys] = useState();
 

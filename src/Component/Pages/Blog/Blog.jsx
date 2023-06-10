@@ -1,8 +1,12 @@
+import { Helmet } from "react-helmet-async";
 
 
 const Blog = () => {
     return (
         <div className="container mx-auto">
+            <Helmet>
+            <title>Baby Car Toy | Blog</title>
+            </Helmet>
             <div className="flex gap-4">
                 <div className="card mt-5 w-full bg-base-100 shadow-xl border-4">
                     <div className="card-body">

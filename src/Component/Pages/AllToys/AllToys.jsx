@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ToyTable from "./ToyTable";
+import { Helmet } from "react-helmet-async";
 
 
 const AllToys = () => {
@@ -21,7 +22,9 @@ const AllToys = () => {
 
     return (
         <div className="container mx-auto">
-
+            <Helmet>
+                <title>Baby Car Toy | All Toy</title>
+            </Helmet>
             <form onSubmit={handleSearch} className="flex items-center my-9">
                 <label htmlFor="voice-search" className="sr-only">Search</label>
                 <div className="relative w-full">

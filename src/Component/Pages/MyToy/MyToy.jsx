@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import MyToyRow from "./MyToyRow";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyToy = () => {
 
@@ -50,6 +51,9 @@ const MyToy = () => {
     }
     return (
         <section className="container mx-auto">
+            <Helmet>
+            <title>Baby Car Toy | My Toy</title>
+            </Helmet>
             <div className="flex items-center justify-end my-3">
                 <p className="mr-2 font-semibold uppercase" >Sort by price : </p>
                 <select

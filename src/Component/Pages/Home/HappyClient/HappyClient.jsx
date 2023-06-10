@@ -9,7 +9,7 @@ const HappyClient = () => {
     return (
         <div className="container mx-auto my-6">
             <div className="mx-auto w-fit  font-bold text-xl md:text-5xl px-8 md:pt-4 md:pb-5 py-3 border-0 mb-8">
-                <h2>Happy Client</h2>
+                <h2>Client Review</h2>
             </div>
             <div className="carousel w-full">
                 

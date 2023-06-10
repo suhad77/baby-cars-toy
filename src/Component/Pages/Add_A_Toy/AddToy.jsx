@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { Helmet } from "react-helmet-async";
 
 
 const AddToy = () => {
@@ -30,15 +31,15 @@ const AddToy = () => {
             body: JSON.stringify(toy)
         })
             .then(res => res.json())
-            .then(data =>{
+            .then(data => {
                 console.log(data);
-                if(data.insertedId){
+                if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'User Update succrssfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                      })
+                    })
                 }
             })
     }
@@ -46,6 +47,9 @@ const AddToy = () => {
 
     return (
         <div className="container mx-auto">
+            <Helmet>
+                <title>Baby Car Toy | Add A Toy</title>
+            </Helmet>
             <div className="hero min-h-screen ">
                 <div className="hero-content flex-col w-full">
                     <div className="card flex-shrink-0 shadow-2xl w-full bg-base-100">

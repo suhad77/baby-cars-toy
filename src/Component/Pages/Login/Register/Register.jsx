@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, profileUpdate, setLoading } = useContext(AuthContext)
@@ -18,22 +19,25 @@ const Register = () => {
         if (password.length < 6) {
             setError("Password length must be up to 6 char");
             return;
-          }
-         
-          try {
+        }
+
+        try {
             setError("");
             setLoading(true);
             const { user } = await createUser(email, password);
             await profileUpdate(user, name, url);
             // navigate(form, { replace: true });
-          } catch (error) {
+        } catch (error) {
             setError(error.message);
-          }
-        };
-       
+        }
+    };
+
 
     return (
         <div className=" bg-base-200">
+            <Helmet>
+                <title>Baby Car Toy | Register</title>
+            </Helmet>
             <div className="container mx-auto">
                 <div className="hero min-h-screen">
                     <div className="hero-content flex-col w-full">

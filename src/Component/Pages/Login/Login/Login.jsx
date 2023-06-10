@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const [error, setError] = useState("")
-    const {signIn, googleSignIn} = useContext(AuthContext)
+    const { signIn, googleSignIn } = useContext(AuthContext)
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -19,27 +20,30 @@ const Login = () => {
         const password = form.password.value;
         console.log(email, password)
         signIn(email, password)
-        .then(result=>{
-            const user = result.user;
-            console.log(user)
-            navigate(from, {replace:true})
-        })
-        .catch(error => setError(error))
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+                navigate(from, { replace: true })
+            })
+            .catch(error => setError(error))
     }
 
-    const handleGoogleSignIn = () =>{
+    const handleGoogleSignIn = () => {
         googleSignIn()
-        .then(result=>{
-            const googleUser = result.user;
-            console.log(googleUser)
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(result => {
+                const googleUser = result.user;
+                console.log(googleUser)
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (
         <div className="bg-base-200">
+            <Helmet>
+                <title>Baby Car Toy | Log in</title>
+            </Helmet>
             <div className="container mx-auto">
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col w-full">

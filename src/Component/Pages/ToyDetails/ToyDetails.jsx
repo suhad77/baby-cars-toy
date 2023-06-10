@@ -1,6 +1,7 @@
 import { Rating } from "@smastrom/react-rating";
 import { useLoaderData } from "react-router-dom";
 import '@smastrom/react-rating/style.css'
+import { Helmet } from "react-helmet-async";
 
 
 const ToyDetails = () => {
@@ -10,6 +11,9 @@ const ToyDetails = () => {
 
     return (
         <section className="container mx-auto bg-white ">
+            <Helmet>
+            <title>Baby Car Toy | Details</title>
+            </Helmet>
             <div className="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6 justify-items-center">
                 <div className="max-w-xs mx-auto">
                     <img
@@ -24,11 +28,11 @@ const ToyDetails = () => {
                     </h2>
                     <p className="mb-4">{toy?.description}</p>
 
-                        <Rating
-                            style={{ maxWidth: 120 }}
-                            value={toy?.rating}
-                            readOnly
-                        />
+                    <Rating
+                        style={{ maxWidth: 120 }}
+                        value={toy?.rating}
+                        readOnly
+                    />
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">
                         ${toy?.price}
                     </span>
