@@ -127,7 +127,7 @@ const AddToy = () => {
                                         <input type="text" name="quantity" placeholder="Available quantity" className="input input-bordered" />
                                     </div>
                                     <div className="form-control mt-9 md:w-1/2">
-                                        <button className="btn btn-primary">Add Toy</button>
+                                        <button className="btn bg-blue-700 hover:bg-blue-800">Add Toy</button>
                                     </div>
                                 </div>
                             </div>
