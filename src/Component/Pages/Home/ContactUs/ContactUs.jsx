@@ -7,7 +7,7 @@ const ContactUs = () => {
                     </div>
             <div className="hero my-6 shadow-2xl ">
                 <div className="hero-content flex-col lg:flex-row-reverse w-full">
-                    <div className="card flex-shrink-0 w-full-smbg-base-100 w-[75%]">
+                    <div className="card flex-shrink-0 w-full-smbg-base-100 md:w-[75%]">
                         <div className="p-[2rem]">
                             <h3 className="text-4xl">
                                 <span className="test-gray-lite dark:text-[#A6A6A6]">I'm always open to discussing product</span> <br />
@@ -17,14 +17,14 @@ const ContactUs = () => {
                             <p className="mt-3 text-black">Please fill Required Fields</p>
                         </div>
                         <div className="card-body">
-                            <div className="flex gap-4">
-                                <div className="form-control w-1/2">
+                            <div className="md:flex gap-4">
+                                <div className="form-control md:w-1/2">
                                     <label className="label">
                                         <span className="label-text">Name</span>
                                     </label>
                                     <input type="text" placeholder="Name" className="input input-bordered" />
                                 </div>
-                                <div className="form-control w-1/2">
+                                <div className="form-control md:w-1/2">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
